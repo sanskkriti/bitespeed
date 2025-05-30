@@ -6,8 +6,8 @@ const prisma = new PrismaClient();
 app.use(express.json());
 
 /**
- * Endpoint: /identify
- * Purpose: Link and reconcile user contact details across multiple orders
+ * Endpoint /identify
+ * Purpose Link and reconcile user contact details across multiple orders
  */
 app.post('/identify', async (req, res) => {
   const { email, phoneNumber } = req.body;
