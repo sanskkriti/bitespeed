@@ -4,8 +4,9 @@
   "description": "Identity reconciliation service with /identify endpoint",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  },
+  "start": "node app.js",
+  "postinstall": "prisma generate"
+},
   "dependencies": {
     "express": "^4.18.2",
     "@prisma/client": "^4.15.0"
