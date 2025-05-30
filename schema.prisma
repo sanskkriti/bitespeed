@@ -1,0 +1,23 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"  // you can change this to "postgresql" or "mysql" if you use those DBs
+  url      = "file:./dev.db" // for SQLite, or put your DB connection string here
+}
+
+model Contact {
+  id            Int      @id @default(autoincrement())
+  email         String?  
+  phoneNumber   String?  
+  linkedId      Int?     
+  linkPrecedence String   @default("primary")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  linkedContact Contact? @relation("LinkedTo", fields: [linkedId], references: [id])
+  linkedContacts Contact[] @relation("LinkedTo")
+}
